@@ -403,19 +403,19 @@
 
                                     <table id="example1" class="table table-bordered table-striped">
                                         <thead>
-                                            <tr style="font-size: 12px">
-                                                <th style="width: 22%">Customer Name</th>
-                                                <th style="width: 1%">VVIP</th>
-                                                <th style="width: 6%">Gender</th>
-                                                <th style="width: 5%">Mobile</th>
-                                                <th style="width: 5%">Status</th>
-                                                <th style="width: 5%">Policy Status</th>
-                                                <th style="width: 15%">Sales Activity Stage</th>
-                                                <th style="width: 6%">NIC Number</th>
-                                                <th style="width: 8%">Lead Source</th>
-                                                <th style="width: 6%">Agent Code</th>
-                                                <th style="width: 6%">Created Date</th>
-                                                <th style="width: 15%">Updated Sales Activity</th>
+                                            <tr style="font-size: 12px;">
+                                                <th colspan="3" style="border: 1px solid  #d7dde8;">Customer Name</th>
+                                                <th style="border: 1px solid  #d7dde8;">VVIP</th>
+                                                <th style="border: 1px solid  #d7dde8;">Gender</th>
+                                                <th style="border: 1px solid  #d7dde8;">Mobile</th>
+                                                <th style="border: 1px solid  #d7dde8;">Status</th>
+                                                <th style="border: 1px solid  #d7dde8;">Policy Status</th>
+                                                <th style="border: 1px solid  #d7dde8;">Sales Activity Stage</th>
+                                                <th style="border: 1px solid  #d7dde8;">NIC Number</th>
+                                                <th style="border: 1px solid  #d7dde8;">Lead Source</th> 
+                                                <th style="border: 1px solid  #d7dde8;">Agent Code</th>
+                                                <th style="border: 1px solid  #d7dde8;">Created Date</th>
+                                                <th style="border: 1px solid  #d7dde8;">Updated Sales Activity</th>
 
                                             </tr>
                                         </thead>
@@ -427,6 +427,19 @@
 
                                             %>
                                             <tr>
+                                                <td style="border: none; width: 1%"><input type="checkbox" style="vertical-align: top;"></td>
+                                                <td style="border: none"><i class="fa fa-edit" style="font-size:24px;color:red; width: 12%; margin-right: 5px;"></i></td>
+                                                <td>
+                                                    <span style="font-size: 11.5px"><b><%= itr.next()%></span>
+                                                </td>
+                                                    <%int a = (Integer) itr.next();
+                                                    if (a == 1) {%>
+                                                    <td style="vertical-align: middle; text-align: center"><input type="checkbox" checked="checked"></td>
+                                                    <%} else {%>
+                                                <td style="vertical-align: middle; text-align: center"><input type="checkbox"></td>
+                                                    <%}%>
+
+                                                <td style="text-align: center"><%= itr.next()%></td>
                                                 <td><%= itr.next()%></td>
                                                 <td><%= itr.next()%></td>
                                                 <td><%= itr.next()%></td>
@@ -435,10 +448,7 @@
                                                 <td><%= itr.next()%></td>
                                                 <td><%= itr.next()%></td>
                                                 <td><%= itr.next()%></td>
-                                                <td><%= itr.next()%></td>
-                                                <td><%= itr.next()%></td>
-                                                <td><%= itr.next()%></td>
-                                                <td>update</td>
+                                                <td style="color: #ff471a; font-weight: bold">Update</td>
                                             </tr>
                                             <%}%>
 
@@ -511,7 +521,7 @@
                                                     }
 
                                                 });
-                                                })
+                                                
         </script>
     </body>
 </html>
