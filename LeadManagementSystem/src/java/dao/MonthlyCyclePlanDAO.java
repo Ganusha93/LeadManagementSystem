@@ -101,8 +101,6 @@ public class MonthlyCyclePlanDAO {
                 mcp.add(rs.getInt("FOURTH_ACTUAL"));
                 mcp.add(rs.getInt("FOURTH_PLANNED"));
                 mcp.add(rs.getInt("ACTUAL"));
-                
-                System.out.println(rs.getString("DESCRIPTION"));
 
             }
             rs.close();

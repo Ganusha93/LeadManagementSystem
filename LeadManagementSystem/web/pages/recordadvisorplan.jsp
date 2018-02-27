@@ -254,7 +254,7 @@
 
                         </li>
                         <li>
-                            <a href="./pages/dashboard1.jsp">
+                            <a href="CustomerDetailsController">
                                 <i class="fa fa-dashboard"></i> <span>Search Leads</span>
                             </a>
 

@@ -3,6 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package controller;
 
 import connection.DBConnection;
@@ -14,17 +15,18 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import service.MonthlyPlanService;
+import service.CustomerDetailsService;
 
 /**
  *
- * @author Ganusha
+ * @author Imesh
  */
-public class UpdateMonthlyPlanController extends HttpServlet {
+public class CustomerDetailsController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,28 +40,26 @@ public class UpdateMonthlyPlanController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        List planList = new ArrayList();
+        List mcp = new ArrayList();
         try (PrintWriter out = response.getWriter()) {
             
-            MonthlyPlanService monthlyPlanService = new MonthlyPlanService();
+            CustomerDetailsService customerDetailsService = new CustomerDetailsService();
             DBConnection dBConnection = new DBConnection();
             Connection connection = dBConnection.getConnection();
             
-            planList.add(request.getParameter("0")) ;
-            planList.add(request.getParameter("1"));
-            planList.add(request.getParameter("2"));
-            planList.add(request.getParameter("3"));
-            planList.add(request.getParameter("4"));
-            planList.add(request.getParameter("5"));
-            planList.add(request.getParameter("6"));
-            planList.add(request.getParameter("7"));
-            planList.add(request.getParameter("8"));
+            String user = "USR0001";
             
-            monthlyPlanService.updatePlanList(planList,connection);
+            mcp= customerDetailsService.getCustomerDetails(user, connection);
             
-        } catch (Exception ex) {
+            request.setAttribute("mcp", mcp);
+            RequestDispatcher rd = request.getRequestDispatcher("./pages/dashboard1.jsp");
+            rd.forward(request, response);
+            
+        }catch (Exception ex) {
             ex.printStackTrace();
-        } 
+        } finally {
+            mcp.clear();
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
