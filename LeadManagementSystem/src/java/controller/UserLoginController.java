@@ -46,8 +46,7 @@ public class UserLoginController extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
 
             MonthlyPlanService monthlyPlanService = new MonthlyPlanService();
-            MonthlyCyclePlanService monthlyCyclePlanService = new MonthlyCyclePlanService();
-            MonthlyCyclePlanDTO monthlyCyclePlanDTOIn = new MonthlyCyclePlanDTO();
+            MonthlyCyclePlanService monthlyCyclePlanService = new MonthlyCyclePlanService();       
             DBConnection dBConnection = new DBConnection();
 
             Connection connection = dBConnection.getConnection();
@@ -65,6 +64,7 @@ public class UserLoginController extends HttpServlet {
             for (MonthlyPlanDTO monthlyPlanDTO : planList) {
                 planID = monthlyPlanDTO.getPlanID();
 
+                MonthlyCyclePlanDTO monthlyCyclePlanDTOIn = new MonthlyCyclePlanDTO();
                 MonthlyCyclePlanDTO monthlyCyclePlanDTO = monthlyCyclePlanService.checkDate(userId, planID, connection);
                 if (monthlyCyclePlanDTO != null) {
                     month = Integer.parseInt(dateFormat.format(monthlyCyclePlanDTO.getDate()));

@@ -25,7 +25,7 @@ public class MonthlyPlanService {
         return monthlyPlanDAO.getPlanList(UserID, connection);
     }
 
-    public void updatePlanList(List planList, Connection connection) {
-        
+    public void updatePlanList(ArrayList<MonthlyPlanDTO> updateList , String user, Connection connection) {
+        monthlyPlanDAO.updatePlanList(updateList,user,connection);
     }
 }

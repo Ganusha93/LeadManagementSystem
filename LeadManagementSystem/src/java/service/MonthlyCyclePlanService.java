@@ -41,4 +41,8 @@ public class MonthlyCyclePlanService {
         return monthlyCyclePlanDAO.getMonthlyCyclePlan(User, Month, connection);
     }
 
+    public void updateMonthlyCycle(MonthlyCyclePlanDTO monthlyCyclePlanDTOIn,String user ,Connection connection) {
+        monthlyCyclePlanDAO.updateMonthlyCycle(monthlyCyclePlanDTOIn,user, connection);
+    }
+
 }

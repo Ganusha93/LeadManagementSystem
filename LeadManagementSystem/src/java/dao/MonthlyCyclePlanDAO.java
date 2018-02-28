@@ -102,7 +102,7 @@ public class MonthlyCyclePlanDAO {
                 mcp.add(rs.getInt("FOURTH_PLANNED"));
                 mcp.add(rs.getInt("ACTUAL"));
                 
-                System.out.println(rs.getString("DESCRIPTION"));
+                //System.out.println(rs.getString("DESCRIPTION"));
 
             }
             rs.close();
@@ -111,6 +111,26 @@ public class MonthlyCyclePlanDAO {
         }
 
         return mcp;
+    }
+
+    public void updateMonthlyCycle(MonthlyCyclePlanDTO mcpdto,String user, Connection connection) {
+        PreparedStatement pst = null;
+        String sql = null;
+        int result = 0;
+
+        try {
+            sql="UPDATE LMS_MONTHLY_CYCLE_PLAN SET "
+                    + "FIRST_PLANNED='"+mcpdto.getFirstPlanned()+"',"
+                    + "SECOND_PLANNED='"+mcpdto.getSecondPlanned()+"',"
+                    + "THIRD_PLANNED='"+mcpdto.getThirdPlanned()+"',"
+                    + "FOURTH_PLANNED='"+mcpdto.getFourthPlanned()+"' "
+                    + "WHERE USER_ID='"+user+"' AND MONTH='"+mcpdto.getMonth()+"' AND PLAN_ID='"+mcpdto.getPlanID()+"'";
+            pst = connection.prepareStatement(sql);
+            result = pst.executeUpdate(sql);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+      
     }
 
 }

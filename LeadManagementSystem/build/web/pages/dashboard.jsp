@@ -35,7 +35,8 @@
               href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
     </head>
     <body class="hold-transition skin-blue sidebar-mini">
-        <div class="wrapper">
+        <div id="simpleform" style="display:none ; width: 200%;"><jsp:include page="simpleform.jsp" /></div> 
+        <div id="wrapper" class="wrapper">
 
             <header class="main-header">
                 <!-- Logo -->
@@ -315,7 +316,7 @@
 
 
                                         <tbody>
-                                            
+
                                             <%Iterator itr;%>
                                             <%
                                                 List data = (List) request.getAttribute("mcp");
@@ -325,7 +326,7 @@
                                             <tr>
                                                 <td style="border: 1px solid  #d7dde8  ;"><%= itr.next()%></td>
                                                 <td style="border: 1px solid  #d7dde8;">
-                                                    <span><%= itr.next()%>&nbsp;</span><a href="./pages/recordadvisorplan.jsp"><i class="fa fa-pencil" ></i></a>
+                                                    <span><%= itr.next()%>&nbsp;</span><a href="javascript:loadSimpleForm()"><i class="fa fa-pencil" ></i></a>
                                                     <span class="pull-right">&nbsp;<%= itr.next()%>&nbsp;<i class=" fa <%= itr.next()%>" style="font-size:18px;color:<%= itr.next()%>"></i></span>
                                                 </td>
                                                 <td style="border: 1px solid  #d7dde8;">
@@ -341,13 +342,13 @@
                                                     <span class="pull-right">&nbsp;<%= itr.next()%>&nbsp;<i class="fa <%= itr.next()%>" style="font-size:18px;color:<%= itr.next()%>"></i></span>
                                                 </td>
                                                 <td><center><%= itr.next()%></center></td>
-                                                <td style="border: 1px solid  #d7dde8;">
-                                                    <span><%= itr.next()%>&nbsp;</span>
-                                                    <span class="pull-right">&nbsp;<%= itr.next()%>&nbsp;<i class="fa <%= itr.next()%>" style="font-size:18px;color:<%= itr.next()%>"></i></span>
-                                                </td>
-                                                
-                                                <%}%>
-                                            </tr>
+                                        <td style="border: 1px solid  #d7dde8;">
+                                            <span><%= itr.next()%>&nbsp;</span>
+                                            <span class="pull-right">&nbsp;<%= itr.next()%>&nbsp;<i class="fa <%= itr.next()%>" style="font-size:18px;color:<%= itr.next()%>"></i></span>
+                                        </td>
+
+                                        <%}%>
+                                        </tr>
 
                                     </table>
                                 </div>
@@ -402,6 +403,12 @@
                     'autoWidth': false
                 })
             })
+
+            function loadSimpleForm() {
+
+                $('#simpleform').toggle("fast");
+                document.getElementById('wrapper').style.opacity = '0.3';
+            }
         </script>
 
 
