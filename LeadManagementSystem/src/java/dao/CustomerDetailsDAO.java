@@ -6,9 +6,11 @@
 
 package dao;
 
+import dto.CustomerDetailsDTO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -100,5 +102,29 @@ public class CustomerDetailsDAO {
             e.printStackTrace();
         }
         return scc;
+    }
+
+    public ArrayList<CustomerDetailsDTO> searchCustomerNames(String userId, CustomerDetailsDTO customerDetailsDTO, Connection connection) {
+        
+        ArrayList<CustomerDetailsDTO> list = new ArrayList<>();
+        Statement st = null;
+        ResultSet rs = null;
+        String sql = null;
+        try{
+            sql= "SELECT CUS_NAME FROM LMS_CUSTOMER_DETAILS WHERE USER_ID='"+userId+"' AND CUS_NAME LIKE '%"+customerDetailsDTO.getCusName()+"%'";
+            st= connection.createStatement();
+            rs=st.executeQuery(sql);
+            
+            while(rs.next()){
+                CustomerDetailsDTO cusNameDTO = new CustomerDetailsDTO();
+                cusNameDTO.setCusName(rs.getString("CUS_NAME"));
+                list.add(cusNameDTO);
+            }
+            
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }
+        
+        return list;
     }
 }

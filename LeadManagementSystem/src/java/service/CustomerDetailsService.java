@@ -7,6 +7,7 @@
 package service;
 
 import dao.CustomerDetailsDAO;
+import dto.CustomerDetailsDTO;
 import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,5 +26,9 @@ public class CustomerDetailsService {
     
     public List searchCustomerDetails(String user, List list, Connection connection){
         return customerDetailsDAO.searchCustomerDetails(user, list, connection);
+    }
+
+    public ArrayList<CustomerDetailsDTO> searchCustomerNames(String userId, CustomerDetailsDTO customerDetailsDTO, Connection connection) {
+        return customerDetailsDAO.searchCustomerNames(userId,customerDetailsDTO,connection);
     }
 }

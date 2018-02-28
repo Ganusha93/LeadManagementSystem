@@ -11,6 +11,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
         <title> Lead Management System</title>
         <!-- Tell the browser to be responsive to screen width -->
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
@@ -333,11 +334,12 @@
                                             }
 
                                         </style>
-                                        <form id="myForm" method="GET" action="SearchCustomerController">
+                                        <form method="GET" action="SearchCustomerController">
                                             <div>
                                                 <label for="cname" >Customer Name</label>
-                                                <input type="text" id="cname" name="customername">
-
+                                                <input type="text" id="cname" name="customername" autocomplete="off" onkeyup="showData(this.value);">
+                                                <span style="position: absolute; z-index: 5; list-style: none; background-color: whitesmoke; width: 20%;" id="autocomplete" ></span>
+                                                
                                                 <label for="lstatus">Lead Status</label>
                                                 <select id="lstatus" name="leadstatus">
                                                     <option style="display: none" value=""></option>
@@ -397,8 +399,9 @@
                                             </div>
 
                                             <a href="SearchCustomerController"> <button id="search1" type="submit"><span class="fa fa-search">Search</span></button></a>
-                                            <button id="search1" onclick="myFunction()"><span class="fa fa-close">Clear</span></button>
+                                            <button id="search1" type="reset"><span class="fa fa-close">Clear</span></button>
                                         </form>
+
                                     </div>
 
                                     <table id="example1" class="table table-bordered table-striped">
@@ -437,11 +440,11 @@
                                                             <span style="font-size: 11.5px;"><b><%= itr.next()%></span>
                                                         </div>
                                                     </div>
-                                                     
+
                                                 </td>
-                                                    <%int a = (Integer) itr.next();
-                                                    if (a == 1) {%>
-                                                    <td style="vertical-align: middle; text-align: center"><input type="checkbox" checked="checked"></td>
+                                                <%int a = (Integer) itr.next();
+                                                        if (a == 1) {%>
+                                                <td style="vertical-align: middle; text-align: center"><input type="checkbox" checked="checked"></td>
                                                     <%} else {%>
                                                 <td style="vertical-align: middle; text-align: center"><input type="checkbox"></td>
                                                     <%}%>
@@ -504,31 +507,49 @@
         <script src="dist/js/demo.js"></script>
         <!-- page script -->
         <script>
-                                                $(function() {
-                                                    $('#example1').DataTable({
-                                                        'paging': true,
-                                                        'lengthChange': true,
-                                                        'searching': false,
-                                                        'ordering': true,
-                                                        'info': true,
-                                                        'autoWidth': false
-                                                    })
+                                                    $(function() {
+                                                        $('#example1').DataTable({
+                                                            'paging': true,
+                                                            'lengthChange': true,
+                                                            'searching': false,
+                                                            'ordering': true,
+                                                            'info': true,
+                                                            'autoWidth': false
+                                                        })
 
-                                                    $('#example2').DataTable({
-                                                        'paging': true,
-                                                        'lengthChange': false,
-                                                        'searching': false,
-                                                        'ordering': true,
-                                                        'info': true,
-                                                        'autoWidth': false
-                                                    })
+                                                        $('#example2').DataTable({
+                                                            'paging': true,
+                                                            'lengthChange': false,
+                                                            'searching': false,
+                                                            'ordering': true,
+                                                            'info': true,
+                                                            'autoWidth': false
+                                                        })
 
-                                                    function myFunction() {
-                                                        document.getElementById("myForm").reset();
+
+                                                    });
+
+                                                    function showData(value) {
+
+                                                        $.ajax({
+                                                            url: "SearchCustomerNameController?query=" + value,
+                                                            type: "POST",
+                                                            async: false,
+                                                            success: function(data) {
+                                                                $("#autocomplete").fadeIn();
+                                                                $("#autocomplete").html(data);
+                                                            }
+
+                                                        });
+
+                                                        $(document).on('click', 'li', function() {
+                                                            $("#customername").val($(this).text());
+                                                            $("#autocomplete").fadeOut();
+                                                        });
+
+
                                                     }
 
-                                                });
-                                                
         </script>
     </body>
 </html>
