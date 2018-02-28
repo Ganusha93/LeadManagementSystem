@@ -45,7 +45,7 @@ public class SearchCustomerController extends HttpServlet {
             DBConnection dBConnection = new DBConnection();
             Connection connection = dBConnection.getConnection();
             
-            String user= "USR0001";
+            String user= "1";
             
             planList.add(request.getParameter("customername")) ;
             planList.add(request.getParameter("leadstatus"));

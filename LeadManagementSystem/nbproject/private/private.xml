@@ -3,10 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/E:/PROJECTS/LeadManagementSystem/LeadManagementSystem/src/java/controller/SearchCustomerController.java</file>
             <file>file:/E:/PROJECTS/LeadManagementSystem/LeadManagementSystem/web/pages/dashboard.jsp</file>
-            <file>file:/E:/PROJECTS/LeadManagementSystem/LeadManagementSystem/src/java/controller/MonthlyCyclePlanController.java</file>
             <file>file:/E:/PROJECTS/LeadManagementSystem/LeadManagementSystem/src/java/controller/CustomerDetailsController.java</file>
+            <file>file:/E:/PROJECTS/LeadManagementSystem/LeadManagementSystem/src/java/dao/CustomerDetailsDAO.java</file>
             <file>file:/E:/PROJECTS/LeadManagementSystem/LeadManagementSystem/web/pages/dashboard1.jsp</file>
+            <file>file:/E:/PROJECTS/LeadManagementSystem/LeadManagementSystem/src/java/service/CustomerDetailsService.java</file>
         </group>
     </open-files>
 </project-private>

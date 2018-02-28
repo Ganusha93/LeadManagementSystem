@@ -404,7 +404,7 @@
                                     <table id="example1" class="table table-bordered table-striped">
                                         <thead>
                                             <tr style="font-size: 12px;">
-                                                <th colspan="3" style="border: 1px solid  #d7dde8;">Customer Name</th>
+                                                <th style="border: 1px solid  #d7dde8; width: 25%;">Customer Name</th>
                                                 <th style="border: 1px solid  #d7dde8;">VVIP</th>
                                                 <th style="border: 1px solid  #d7dde8;">Gender</th>
                                                 <th style="border: 1px solid  #d7dde8;">Mobile</th>
@@ -427,10 +427,17 @@
 
                                             %>
                                             <tr>
-                                                <td style="border: none; width: 1%"><input type="checkbox" style="vertical-align: top;"></td>
-                                                <td style="border: none"><i class="fa fa-edit" style="font-size:24px;color:red; width: 12%; margin-right: 5px;"></i></td>
                                                 <td>
-                                                    <span style="font-size: 11.5px"><b><%= itr.next()%></span>
+                                                    <div>
+                                                        <div style="float: left; display: inline-block; width: 24%;">
+                                                            <input type="checkbox" style="vertical-align: top; margin-right: 10%;">
+                                                            <i class="fa fa-edit" style="font-size:24px;color:red; width: 12%;"></i>
+                                                        </div>
+                                                        <div style="display: inline-block; float: left; width: 76%;">
+                                                            <span style="font-size: 11.5px;"><b><%= itr.next()%></span>
+                                                        </div>
+                                                    </div>
+                                                     
                                                 </td>
                                                     <%int a = (Integer) itr.next();
                                                     if (a == 1) {%>

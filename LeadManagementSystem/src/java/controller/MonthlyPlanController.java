@@ -46,7 +46,7 @@ public class MonthlyPlanController extends HttpServlet {
             DBConnection dBConnection = new DBConnection();
             Connection connection = dBConnection.getConnection();
             
-            String user = "USR0001";
+            String user = "1";
             String month = "2018/02";
             
             ArrayList<MonthlyPlanDTO> planList = monthlyPlanService.getPlanList(user, connection);
