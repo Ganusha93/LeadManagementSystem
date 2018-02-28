@@ -67,7 +67,7 @@ public class UpdateMonthlyPlanController extends HttpServlet {
             planList.add(request.getParameter("8"));
 
             Iterator itr;
-            int i = 0;
+            int i = 1;
             for (itr = planList.iterator(); itr.hasNext();) {
                 MonthlyPlanDTO monthlyPlanDTO = new MonthlyPlanDTO();
                 monthlyPlanDTO.setPlanID("PLN" + i);
