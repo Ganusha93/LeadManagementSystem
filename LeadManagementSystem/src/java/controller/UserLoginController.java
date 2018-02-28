@@ -51,7 +51,7 @@ public class UserLoginController extends HttpServlet {
 
             Connection connection = dBConnection.getConnection();
 
-            String userId = "USR0001";
+            String userId = "1";
             String password = "123";
             Date date = new Date();
             DateFormat dateFormat = new SimpleDateFormat("MM");

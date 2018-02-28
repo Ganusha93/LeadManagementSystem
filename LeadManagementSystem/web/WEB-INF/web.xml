@@ -16,6 +16,14 @@
         <servlet-name>UpdateMonthlyPlanController</servlet-name>
         <servlet-class>controller.UpdateMonthlyPlanController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CustomerDetailsController</servlet-name>
+        <servlet-class>controller.CustomerDetailsController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SearchCustomerController</servlet-name>
+        <servlet-class>controller.SearchCustomerController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>MonthlyCyclePlanController</servlet-name>
         <url-pattern>/MonthlyCyclePlanController</url-pattern>
@@ -31,6 +39,14 @@
     <servlet-mapping>
         <servlet-name>UpdateMonthlyPlanController</servlet-name>
         <url-pattern>/UpdateMonthlyPlanController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CustomerDetailsController</servlet-name>
+        <url-pattern>/CustomerDetailsController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SearchCustomerController</servlet-name>
+        <url-pattern>/SearchCustomerController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

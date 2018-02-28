@@ -3,27 +3,30 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package controller;
 
 import connection.DBConnection;
-import dto.MonthlyPlanDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import service.MonthlyPlanService;
+import service.CustomerDetailsService;
 
 /**
  *
- * @author Ganusha
+ * @author Imesh
  */
-public class MonthlyPlanController extends HttpServlet {
+public class CustomerDetailsController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,35 +40,26 @@ public class MonthlyPlanController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        List responseList = new ArrayList();
-        
-        try {
+        List mcp = new ArrayList();
+        try (PrintWriter out = response.getWriter()) {
             
-            
-            MonthlyPlanService monthlyPlanService = new MonthlyPlanService();
+            CustomerDetailsService customerDetailsService = new CustomerDetailsService();
             DBConnection dBConnection = new DBConnection();
             Connection connection = dBConnection.getConnection();
             
             String user = "1";
-            String month = "2018/02";
             
-            ArrayList<MonthlyPlanDTO> planList = monthlyPlanService.getPlanList(user, connection);
-            for (MonthlyPlanDTO monthlyPlanDTO : planList) {
-                responseList.add(monthlyPlanDTO.getDescription());
-                responseList.add(monthlyPlanDTO.getCount());
-                
-            }
+            mcp= customerDetailsService.getCustomerDetails(user, connection);
             
-            request.setAttribute("planList", responseList);
-            RequestDispatcher rd = request.getRequestDispatcher("./pages/recordadvisorplan.jsp");
+            request.setAttribute("mcp", mcp);
+            RequestDispatcher rd = request.getRequestDispatcher("./pages/dashboard1.jsp");
             rd.forward(request, response);
             
-            
-            
-        } catch (Exception e) {
-            e.printStackTrace();
+        }catch (Exception ex) {
+            ex.printStackTrace();
+        } finally {
+            mcp.clear();
         }
-        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

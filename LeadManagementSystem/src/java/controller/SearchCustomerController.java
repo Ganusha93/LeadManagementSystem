@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package controller;
 
 import connection.DBConnection;
-import dto.MonthlyPlanDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -17,13 +17,13 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import service.MonthlyPlanService;
+import service.CustomerDetailsService;
 
 /**
  *
- * @author Ganusha
+ * @author Imesh
  */
-public class MonthlyPlanController extends HttpServlet {
+public class SearchCustomerController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,35 +37,34 @@ public class MonthlyPlanController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        List responseList = new ArrayList();
-        
-        try {
+        List planList = new ArrayList();
+        List scc = new ArrayList();
+        try (PrintWriter out = response.getWriter()) {
             
-            
-            MonthlyPlanService monthlyPlanService = new MonthlyPlanService();
+            CustomerDetailsService customerDetailsService = new CustomerDetailsService();
             DBConnection dBConnection = new DBConnection();
             Connection connection = dBConnection.getConnection();
             
-            String user = "1";
-            String month = "2018/02";
+            String user= "1";
             
-            ArrayList<MonthlyPlanDTO> planList = monthlyPlanService.getPlanList(user, connection);
-            for (MonthlyPlanDTO monthlyPlanDTO : planList) {
-                responseList.add(monthlyPlanDTO.getDescription());
-                responseList.add(monthlyPlanDTO.getCount());
-                
-            }
+            planList.add(request.getParameter("customername")) ;
+            planList.add(request.getParameter("leadstatus"));
+            planList.add(request.getParameter("salesactivitystage"));
+            planList.add(request.getParameter("leadsource"));
+            planList.add(request.getParameter("policystatus"));
+            planList.add(request.getParameter("datecreated"));
+            planList.add(request.getParameter("todate"));
+            planList.add(request.getParameter("nic"));
             
-            request.setAttribute("planList", responseList);
-            RequestDispatcher rd = request.getRequestDispatcher("./pages/recordadvisorplan.jsp");
+            scc=customerDetailsService.searchCustomerDetails(user, planList, connection);
+            
+            request.setAttribute("mcp", scc);
+            RequestDispatcher rd = request.getRequestDispatcher("./pages/dashboard1.jsp");
             rd.forward(request, response);
             
-            
-            
-        } catch (Exception e) {
-            e.printStackTrace();
+        }catch(Exception ex){
+            ex.printStackTrace();
         }
-        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
