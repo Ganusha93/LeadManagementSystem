@@ -28,6 +28,10 @@
         <servlet-name>SearchCustomerNameController</servlet-name>
         <servlet-class>controller.SearchCustomerNameController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>LogoutController</servlet-name>
+        <servlet-class>controller.LogoutController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>MonthlyCyclePlanController</servlet-name>
         <url-pattern>/MonthlyCyclePlanController</url-pattern>
@@ -55,6 +59,10 @@
     <servlet-mapping>
         <servlet-name>SearchCustomerNameController</servlet-name>
         <url-pattern>/SearchCustomerNameController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LogoutController</servlet-name>
+        <url-pattern>/LogoutController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

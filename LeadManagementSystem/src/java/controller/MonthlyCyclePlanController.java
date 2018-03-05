@@ -20,6 +20,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import service.MonthlyCyclePlanService;
 
 /**
@@ -43,20 +44,21 @@ public class MonthlyCyclePlanController extends HttpServlet {
         List mcp = new ArrayList();
         List responsemcp = new ArrayList();
         try (PrintWriter out = response.getWriter()) {
-
+            
             MonthlyCyclePlanService monthlyCyclePlanService = new MonthlyCyclePlanService();
             DBConnection dBConnection = new DBConnection();
             Connection connection = dBConnection.getConnection();
-
-            String user = "1";
-            String month = "2018/02";
-
+            HttpSession session = request.getSession();
+            
+            String user = (String) session.getAttribute("userID");
+            String month = "2018/03";
+            
             mcp = monthlyCyclePlanService.getMonthlyCyclePlan(user, month, connection);
-
+            
             Iterator itr;
-
+            
             for (itr = mcp.iterator(); itr.hasNext();) {
-
+                
                 String des = (String) (itr.next());
                 int fa = (int) itr.next();
                 int fp = (int) itr.next();
@@ -67,7 +69,7 @@ public class MonthlyCyclePlanController extends HttpServlet {
                 int foa = (int) itr.next();
                 int fop = (int) itr.next();
                 int actual = (int) itr.next();
-
+                
                 responsemcp.add(des);
                 responsemcp.add(fa);
                 if (fp - fa > 0) {
@@ -78,7 +80,7 @@ public class MonthlyCyclePlanController extends HttpServlet {
                     responsemcp.add(fa - fp);
                     responsemcp.add("fa-toggle-up");
                     responsemcp.add("green");
-
+                    
                 }
                 
                 responsemcp.add(sa);
@@ -86,13 +88,13 @@ public class MonthlyCyclePlanController extends HttpServlet {
                     responsemcp.add(sp - sa);
                     responsemcp.add("fa-toggle-down");
                     responsemcp.add("red");
-
+                    
                 } else {
                     responsemcp.add(sa - sp);
                     responsemcp.add("fa-toggle-up");
                     responsemcp.add("green");
                 }
-
+                
                 responsemcp.add(ta);
                 if (tp - ta > 0) {
                     responsemcp.add(tp - ta);
@@ -103,7 +105,7 @@ public class MonthlyCyclePlanController extends HttpServlet {
                     responsemcp.add("fa-toggle-up");
                     responsemcp.add("green");
                 }
-
+                
                 responsemcp.add(foa);
                 if (fop - foa > 0) {
                     responsemcp.add(fop - foa);
@@ -114,7 +116,7 @@ public class MonthlyCyclePlanController extends HttpServlet {
                     responsemcp.add("fa-toggle-up");
                     responsemcp.add("green");
                 }
-
+                
                 responsemcp.add(fp + sp + tp + fop);
                 responsemcp.add(actual);
                 if ((fp + sp + tp + fop) - actual > 0) {
@@ -126,20 +128,20 @@ public class MonthlyCyclePlanController extends HttpServlet {
                     responsemcp.add("fa-toggle-up");
                     responsemcp.add("green");
                 }
-
+                
             }
-
+            
             request.setAttribute("mcp", responsemcp);
             RequestDispatcher rd = request.getRequestDispatcher("./pages/dashboard.jsp");
             rd.forward(request, response);
-
+            
         } catch (Exception ex) {
             ex.printStackTrace();
         } finally {
-
+            
             mcp.clear();
             responsemcp.clear();
-
+            
         }
     }
 

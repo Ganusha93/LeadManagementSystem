@@ -32,46 +32,94 @@
                 <!-- Horizontal Form -->
                 <div class="box box-info with-border">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Horizontal Form</h3>
+                        <center><h3 class="box-title">Names Collected</h3></center>
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->
-                    <form class="form-horizontal">
-                        <div class="box-body">
+                    <form role="form">
+                        <div class="box-body col-lg-6">
                             <div class="form-group">
-                                <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+                                <label for="exampleInputEmail1">First Name:*</label>
+                                <input class="form-control  input-group-sm " id="exampleInputEmail1" type="text" placeholder="Enter email">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Mobile No:*</label>
+                                <input class="form-control input-group-sm" id="exampleInputPassword1" type="text" placeholder="Password">
+                            </div>
+                            <div class="form-group">
+                                <label>Lead Source:*</label>
+                                <select class="form-control">
+                                    <option style="display: none" value=""></option>
+                                    <option value="selfgenerated">Self Generated</option>
+                                    <option value="campaign">Campaign</option>
+                                    <option value="conference">Conference</option>
+                                    <option value="email">Email</option>
+                                    <option value="existingcustomer">Existing Customer</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
 
-                                <div class="col-sm-10">
-                                    <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
-
-                                <div class="col-sm-10">
-                                    <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-sm-offset-2 col-sm-10">
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox"> Remember me
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
+                        <div class="box-body col-lg-6 box-group">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Last Name:*</label>
+                                <input class="form-control input-group-sm" id="exampleInputEmail1" type="text" placeholder="Enter email">
+                            </div>
+                            <div class="form-group">
+                                <label>Gender:*</label>
+                                <select class="form-control">
+                                    <option>Male</option>
+                                    <option>Female</option>
+
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Plan Stage:*</label>
+                                <select class="form-control">
+                                    <option style="display: none" value=""></option>
+                                    <option value="namescollected">Names Collected</option>
+                                    <option value="qualifiedprospects">Qualified Prospects</option>
+                                    <option value="appointmentstaken">Appointments Taken</option>
+                                    <option value="factfindinginterviews">Fact Finding Interviews</option>
+                                    <option value="salespresentation">Sales Presentation</option>
+                                    <option value="followupinterviews">Follow Up Interviews</option>
+                                    <option value="noofclosings">No of Closings</option>
+
+                                </select>
+                            </div>
+
+                        </div>
+
                         <!-- /.box-body -->
+
                         <div class="box-footer">
-                            <button type="submit" class="btn btn-danger">Cancel</button>
-                            <button type="submit" class="btn btn-info pull-right">Sign in</button>
+                            <div class="pull-left" id="tosimple">
+                                <button class="btn btn-default pull-right margin-r-5" type="button" onclick="closeForm()">Cancel</button>
+                                <button class="btn btn-primary margin-r-5 pull-right" type="button" onclick="loadForm();">Save</button>
+                            </div>
+                            <div id="tocomplex" style="display: none;">
+                                <span><b>Are you want to fill more details</b></span>
+                                
+                                <button id="btnlater" class="btn btn-primary margin-r-5 pull-right" type="submit" >Later</button>
+                                <a href="./pages/complexform.jsp"><button style="display: true;" id="btnnow"class="btn btn-default pull-right margin-r-5" type="button" >Yes</button></a>
+                            </div>
+                            
                         </div>
-                        <!-- /.box-footer -->
                     </form>
                 </div>
 
             </div>
         </div>
     </body>
+    <script>
+        function closeForm() {
+            $('#content').hide();
+            document.getElementById('wrapper').style.opacity = '1';
+        }
+        function loadForm() {
+            $('#tocomplex').show();
+            $('#tosimple').hide();
+        }
+
+    </script>
 </html>

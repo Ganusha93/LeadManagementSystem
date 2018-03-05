@@ -47,7 +47,7 @@
                 <!-- Logo -->
                 <a href="dashboard.jsp" class="logo">
                     <!-- mini logo for sidebar mini 50x50 pixels -->
-                    <span class="logo-mini"><b>A</b>LT</span>
+                    <span class="logo-mini"><b>FA/b>ME</span>
                     <!-- logo for regular state and mobile devices -->
                     <span class="logo-lg"><b>FAME</b></span>
                 </a>
@@ -184,11 +184,15 @@
                                 </ul>
                             </li>
 
+                            <%
+                                String fname=(String)session.getAttribute("fname");
+                                String lname=(String)session.getAttribute("lname");
+                            %>
                             <!-- User Account: style can be found in dropdown.less -->
                             <li class="dropdown user user-menu">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                     <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-                                    <span class="hidden-xs">Alexander Pierce</span>
+                                    <span class="hidden-xs"><%=fname%> <%=lname%></span>
                                 </a>
                                 <ul class="dropdown-menu">
                                     <!-- User image -->
@@ -206,7 +210,7 @@
                                             <a href="#" class="btn btn-default btn-flat">Profile</a>
                                         </div>
                                         <div class="pull-right">
-                                            <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                                            <a href="LogoutController" class="btn btn-default btn-flat">Sign out</a>
                                         </div>
                                     </li>
                                 </ul>
@@ -226,7 +230,7 @@
                             <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
                         </div>
                         <div class="pull-left info">
-                            <p>Alexander Pierce</p>
+                            <p><%=fname%> <%=lname%></p>
                             <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
                         </div>
                     </div>
@@ -259,7 +263,7 @@
 
 
                         <li>
-                            <a href="calender.jsp">
+                            <a href="../pages/calender.jsp">
                                 <i class="fa fa-calendar"></i> <span>Calendar</span>
                                 <span class="pull-right-container">
                                     <small class="label pull-right bg-red">3</small>
@@ -337,8 +341,8 @@
                                         <form method="GET" action="SearchCustomerController">
                                             <div>
                                                 <label for="cname" >Customer Name</label>
-                                                <input type="text" id="cname" name="customername" autocomplete="off" onkeyup="showData(this.value);">
-                                                <span style="position: absolute; z-index: 5; list-style: none; background-color: whitesmoke; width: 20%;" id="autocomplete" ></span>
+                                                <input type="text" id="cname" name="customername">
+<!--                                                <span style="position: absolute; z-index: 5; list-style: none; background-color: whitesmoke; width: 20%;" id="autocomplete" ></span>-->
                                                 
                                                 <label for="lstatus">Lead Status</label>
                                                 <select id="lstatus" name="leadstatus">
@@ -355,7 +359,7 @@
                                                 <select id="salactstage" name="salesactivitystage">
                                                     <option style="display: none" value=""></option>
                                                     <option value="namescollected">Names Collected</option>
-                                                    <option value="qualifiedprospects">Qualified Prospects</option>
+                                                    <option value="qualified prospects">Qualified Prospects</option>
                                                     <option value="appointmentstaken">Appointments Taken</option>
                                                     <option value="factfindinginterviews">Fact Finding Interviews</option>
                                                     <option value="salespresentation">Sales Presentation</option>
@@ -369,7 +373,7 @@
                                                 <label for="leadsource">Lead Source</label>
                                                 <select id="leadsource" name="leadsource" ng-model="list_category" ng-options="obj.id as obj.name for obj in list_categories.data">
                                                     <option style="display: none" value=""></option>
-                                                    <option value="selfgenerated">Self Generated</option>
+                                                    <option value="self generated">Self Generated</option>
                                                     <option value="campaign">Campaign</option>
                                                     <option value="conference">Conference</option>
                                                     <option value="email">Email</option>
@@ -380,12 +384,12 @@
                                                 <label for="policystatus">Policy Status</label>
                                                 <select id="policystatus" name="policystatus">
                                                     <option style="display: none" value=""></option>
-                                                    <option value="leadverified">Lead Verified</option>
+                                                    <option value="lead verified">Lead Verified</option>
                                                     <option value="other">Other</option>
                                                 </select>
 
                                                 <label for="datecreated">Date Created</label>
-                                                <input type="date" id="datecreated" name="datecreated" style="border-radius: 4px; box-sizing: border-box;width:13%">
+                                                <input type="date" id="datecreated" name="date  created" style="border-radius: 4px; box-sizing: border-box;width:13%">
                                                 <label for="todate" style="margin-left: 1%; width: 2%;">To</label>
                                                 <input type="date" id="todate" name="todate" style="border-radius: 4px; box-sizing: border-box;width:13%;">
 

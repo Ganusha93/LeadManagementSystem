@@ -65,7 +65,7 @@ public class CustomerDetailsDAO {
         String s = "";
         try {
             
-            if(list.get(0)!=""){  s=s+" AND CUS_ID="+"'"+list.get(0)+"'";}
+            if(list.get(0)!=""){  s=s+" AND CUS_NAME="+"'"+list.get(0)+"'";}
             if(list.get(1)!=""){  s=s+" AND STATUS="+"'"+list.get(1)+"'";}
             if(list.get(2)!=""){  s=s+" AND SAL_ACT_STAGE="+"'"+list.get(2)+"'";}
             if(list.get(3)!=""){  s=s+" AND LEAD_SRC="+"'"+list.get(3)+"'";}
@@ -95,6 +95,10 @@ public class CustomerDetailsDAO {
                 scc.add(rs.getString("LEAD_SRC"));
                 scc.add(rs.getString("USER_ID"));
                 scc.add(rs.getString("CREATE_DATE"));
+                
+                System.out.println(rs.getString("CUS_NAME"));
+                System.out.println(rs.getInt("VVIP"));
+                System.out.println(rs.getString("GENDER"));
 
             }
             rs.close();
