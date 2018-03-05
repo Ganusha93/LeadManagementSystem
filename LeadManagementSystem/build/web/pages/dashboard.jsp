@@ -260,7 +260,7 @@
 
 
                         <li>
-                            <a href="calender.jsp">
+                            <a href="./pages/calender.jsp">
                                 <i class="fa fa-calendar"></i> <span>Calendar</span>
                                 <span class="pull-right-container">
                                     <small class="label pull-right bg-red">3</small>

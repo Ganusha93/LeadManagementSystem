@@ -47,6 +47,7 @@ public class SearchCustomerController extends HttpServlet {
             
             String user= "1";
             
+            System.out.println();
             planList.add(request.getParameter("customername")) ;
             planList.add(request.getParameter("leadstatus"));
             planList.add(request.getParameter("salesactivitystage"));
