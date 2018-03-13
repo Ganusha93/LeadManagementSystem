@@ -31,4 +31,8 @@ public class CustomerDetailsService {
     public ArrayList<CustomerDetailsDTO> searchCustomerNames(String userId, CustomerDetailsDTO customerDetailsDTO, Connection connection) {
         return customerDetailsDAO.searchCustomerNames(userId,customerDetailsDTO,connection);
     }
+
+    public void insertCustomerDetails(CustomerDetailsDTO customerDetailsDTO, Connection connection) {
+        CustomerDetailsDAO.insertCutomerDetails(customerDetailsDTO,connection);
+    }
 }

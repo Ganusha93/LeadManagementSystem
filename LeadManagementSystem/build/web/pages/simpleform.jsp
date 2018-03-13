@@ -36,19 +36,19 @@
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->
-                    <form role="form">
+                    <form role="form" method="" action="InsertCustomerDetailsController">
                         <div class="box-body col-lg-6">
                             <div class="form-group">
                                 <label for="exampleInputEmail1">First Name:*</label>
-                                <input class="form-control  input-group-sm " id="exampleInputEmail1" type="text" placeholder="Enter email">
+                                <input class="form-control  input-group-sm " id="exampleInputEmail1" type="text" name="fname">
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Mobile No:*</label>
-                                <input class="form-control input-group-sm" id="exampleInputPassword1" type="text" placeholder="Password">
+                                <input class="form-control input-group-sm" id="exampleInputPassword1" type="text" name="mobileno" >
                             </div>
                             <div class="form-group">
                                 <label>Lead Source:*</label>
-                                <select class="form-control">
+                                <select class="form-control" name="leadsource">
                                     <option style="display: none" value=""></option>
                                     <option value="selfgenerated">Self Generated</option>
                                     <option value="campaign">Campaign</option>
@@ -62,28 +62,37 @@
                         </div>
                         <div class="box-body col-lg-6 box-group">
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Last Name:*</label>
-                                <input class="form-control input-group-sm" id="exampleInputEmail1" type="text" placeholder="Enter email">
+                                <label >Last Name:*</label>
+                                <input class="form-control input-group-sm" id="exampleInputEmail1" type="text" name="lname">
                             </div>
-                            <div class="form-group">
-                                <label>Gender:*</label>
-                                <select class="form-control">
-                                    <option>Male</option>
-                                    <option>Female</option>
 
-                                </select>
+                            <div class="form-group" style="margin-top: 12%">
+
+                                <div class="radio ">
+                                    <label>
+                                        <input name="gender" id="optionsRadios1" type="radio" checked="" value="option1">
+                                        Male
+                                    </label>
+                                </div>
+                                <div class="radio">
+                                    <label>
+                                        <input name="gender" id="optionsRadios2" type="radio" value="option2">
+                                        Female
+                                    </label>
+                                </div>
                             </div>
+
                             <div class="form-group">
                                 <label>Plan Stage:*</label>
-                                <select class="form-control">
+                                <select class="form-control" name="planstage">
                                     <option style="display: none" value=""></option>
-                                    <option value="namescollected">Names Collected</option>
-                                    <option value="qualifiedprospects">Qualified Prospects</option>
-                                    <option value="appointmentstaken">Appointments Taken</option>
-                                    <option value="factfindinginterviews">Fact Finding Interviews</option>
-                                    <option value="salespresentation">Sales Presentation</option>
-                                    <option value="followupinterviews">Follow Up Interviews</option>
-                                    <option value="noofclosings">No of Closings</option>
+                                    <option value="names collected">Names Collected</option>
+                                    <option value="qualified prospects">Qualified Prospects</option>
+                                    <option value="appointments taken">Appointments Taken</option>
+                                    <option value="fact finding interviews">Fact Finding Interviews</option>
+                                    <option value="sales presentation">Sales Presentation</option>
+                                    <option value="follow up interviews">Follow Up Interviews</option>
+                                    <option value="no of closings">No of Closings</option>
 
                                 </select>
                             </div>
@@ -92,19 +101,61 @@
 
                         <!-- /.box-body -->
 
-                        <div class="box-footer">
+                        <div class="box-footer" id="footer">
                             <div class="pull-left" id="tosimple">
                                 <button class="btn btn-default pull-right margin-r-5" type="button" onclick="closeForm()">Cancel</button>
                                 <button class="btn btn-primary margin-r-5 pull-right" type="button" onclick="loadForm();">Save</button>
                             </div>
                             <div id="tocomplex" style="display: none;">
                                 <span><b>Are you want to fill more details</b></span>
-                                
+
                                 <button id="btnlater" class="btn btn-primary margin-r-5 pull-right" type="submit" >Later</button>
-                                <a href="./pages/complexform.jsp"><button style="display: true;" id="btnnow"class="btn btn-default pull-right margin-r-5" type="button" >Yes</button></a>
+                                <button style="display: true;" id="btnnow"class="btn btn-default pull-right margin-r-5" type="button" onclick="loadComplexForm();" >Yes</button>
                             </div>
-                            
+
                         </div>
+
+                        <div class="box-body  box-group" style="display: none;" id="complexform">
+                            <div class="box-body col-lg-6" >
+                                <div class="form-group" >
+                                    <label >NIC:</label>
+                                    <input class="form-control input-group-sm" id="exampleInputEmail1" type="text" name="lname">
+                                </div>
+                                <div class="form-group">
+                                    <label>Lead Status:*</label>
+                                    <select class="form-control" name="gender">
+                                        <option>Verified</option>
+                                        <option>Non Verified</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="box-body col-lg-6 box-group" >
+                                <div class="form-group" >
+                                    <label >Email:</label>
+                                    <input class="form-control input-group-sm" id="exampleInputEmail1" type="text" name="lname">
+                                </div>
+
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox">
+                                        VVIP
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <label >Upload File</label>
+                                    <input type="file" id="exampleInputFile">
+
+
+                                </div>
+                            </div>
+
+
+
+                        </div>
+
                     </form>
                 </div>
 
@@ -119,6 +170,11 @@
         function loadForm() {
             $('#tocomplex').show();
             $('#tosimple').hide();
+        }
+        function loadComplexForm() {
+            $('#footer').hide();
+            $('#complexform').show();
+
         }
 
     </script>

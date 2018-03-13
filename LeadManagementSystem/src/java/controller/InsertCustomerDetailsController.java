@@ -3,27 +3,27 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package controller;
 
 import connection.DBConnection;
+import dao.CustomerDetailsDAO;
+import dto.CustomerDetailsDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
-import java.util.ArrayList;
-import java.util.List;
-import javax.servlet.RequestDispatcher;
+import java.sql.SQLException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import service.CustomerDetailsService;
 
 /**
  *
- * @author Imesh
+ * @author Ganusha
  */
-public class SearchCustomerController extends HttpServlet {
+public class InsertCustomerDetailsController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,37 +34,29 @@ public class SearchCustomerController extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response) {
         response.setContentType("text/html;charset=UTF-8");
-        List planList = new ArrayList();
-        List scc = new ArrayList();
-        try (PrintWriter out = response.getWriter()) {
-            
-            CustomerDetailsService customerDetailsService = new CustomerDetailsService();
+        try {
+
+            CustomerDetailsService customerServiceDetails = new CustomerDetailsService();
+            CustomerDetailsDTO customerDetailsDTO = new CustomerDetailsDTO();
             DBConnection dBConnection = new DBConnection();
             Connection connection = dBConnection.getConnection();
+            HttpSession session = request.getSession();
+
+            customerDetailsDTO.setCusName(request.getParameter("fname") +" "+ request.getParameter("lname"));
+            customerDetailsDTO.setMobNum(request.getParameter("mobileno"));
+            customerDetailsDTO.setGender(request.getParameter("gender"));
+            customerDetailsDTO.setLeadSource(request.getParameter("leadsource"));
+            customerDetailsDTO.setSalActStage(request.getParameter("planstage"));
+            customerDetailsDTO.setUserID((String) session.getAttribute("userID"));
+
+            customerServiceDetails.insertCustomerDetails(customerDetailsDTO, connection);
             
-            String user= "1";
-            
-            System.out.println("sales"+request.getParameter("salesactivitystage"));
-            planList.add(request.getParameter("customername")) ;
-            planList.add(request.getParameter("leadstatus"));
-            planList.add(request.getParameter("salesactivitystage"));
-            planList.add(request.getParameter("leadsource"));
-            planList.add(request.getParameter("policystatus"));
-            planList.add(request.getParameter("datecreated"));
-            planList.add(request.getParameter("todate"));
-            planList.add(request.getParameter("nic"));
-            
-            scc=customerDetailsService.searchCustomerDetails(user, planList, connection);
-            
-            request.setAttribute("mcp", scc);
-            RequestDispatcher rd = request.getRequestDispatcher("./pages/dashboard1.jsp");
-            rd.forward(request, response);
-            
-        }catch(Exception ex){
-            ex.printStackTrace();
+            response.sendRedirect("MonthlyCyclePlanController");
+
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 

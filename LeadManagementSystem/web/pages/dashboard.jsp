@@ -297,6 +297,9 @@
                                 <div class="box-header col-xs-2 pull-right">
                                     <a href="MonthlyPlanController?type=view"><button class="btn btn-block btn-primary btn-xs" type="button" >Record Advisor Plan</button></a>
                                 </div>
+                                <div class="box-header col-lg-2 pull-right">
+                                    <a href="javascript:loadSimpleForm()"><button class="btn btn-block btn-primary btn-xs" type="button" >Create Lead</button></a>
+                                </div>
                                 <!-- /.box-header -->
                                 <div class="box-body">
                                     <table id="" class="table table-bordered table-hover "  >
@@ -327,24 +330,42 @@
                                             <%
                                                 List data = (List) request.getAttribute("mcp");
                                                 for (itr = data.iterator(); itr.hasNext();) {
-                                                    
+                                                String s=(String)itr.next();    
                                             %>
                                             <tr>
-                                                <td style="border: 1px solid  #d7dde8  ;"><%= itr.next()%></td>
+                                                <%if(s.equals("Names Collected")){%>
+                                                    <td style="border: 1px solid  #d7dde8  ;"><a href="SearchCustomerController?customername=&leadstatus=&salesactivitystage=qualified+prospects&leadsource=&policystatus=&date++created=&todate=&nic="><i class="fa fa-search" ></i></a>&nbsp;&nbsp;<%= s%></td>
+                                                <%}else if(s.equals("Qualified Prospects")){%>
+                                                    <td style="border: 1px solid  #d7dde8  ;"><a href="SearchCustomerController?customername=&leadstatus=&salesactivitystage=qualified+prospects&leadsource=&policystatus=&date++created=&todate=&nic="><i class="fa fa-search" ></i></a>&nbsp;&nbsp;<%= s%></td>
+                                                <%}else if(s.equals("Appointments Taken")){%>
+                                                    <td style="border: 1px solid  #d7dde8  ;"><a href="SearchCustomerController?customername=&leadstatus=&salesactivitystage=Appointments+Taken&leadsource=&policystatus=&date++created=&todate=&nic="><i class="fa fa-search" ></i></a>&nbsp;&nbsp;<%= s%></td>
+                                                <%}else if(s.equals("Fact Finding Interviws")){%>
+                                                    <td style="border: 1px solid  #d7dde8  ;"><a href="SearchCustomerController?customername=&leadstatus=&salesactivitystage=Fact+Finding+Interviws&leadsource=&policystatus=&date++created=&todate=&nic="><i class="fa fa-search" ></i></a>&nbsp;&nbsp;<%= s%></td>
+                                                <%}else if(s.equals("Sales Presentation")){%>
+                                                    <td style="border: 1px solid  #d7dde8  ;"><a href="SearchCustomerController?customername=&leadstatus=&salesactivitystage=Sales+Presentation&leadsource=&policystatus=&date++created=&todate=&nic="><i class="fa fa-search" ></i></a>&nbsp;&nbsp;<%= s%></td>
+                                                <%}else if(s.equals("Fllow Up Interviews")){%>
+                                                    <td style="border: 1px solid  #d7dde8  ;"><a href="SearchCustomerController?customername=&leadstatus=&salesactivitystage=Fllow+Up+Interview&leadsource=&policystatus=&date++created=&todate=&nic="><i class="fa fa-search" ></i></a>&nbsp;&nbsp;<%= s%></td>
+                                                <%}else if(s.equals("No of Closings")){%>
+                                                    <td style="border: 1px solid  #d7dde8  ;"><a href="SearchCustomerController?customername=&leadstatus=&salesactivitystage=No+of+Closing&leadsource=&policystatus=&date++created=&todate=&nic="><i class="fa fa-search" ></i></a>&nbsp;&nbsp;<%= s%></td>
+                                                <%}else if(s.equals("Existing Customer Visits")){%>
+                                                    <td style="border: 1px solid  #d7dde8  ;"><a href="SearchCustomerController?customername=&leadstatus=&salesactivitystage=Existing+Customer+Visits&leadsource=&policystatus=&date++created=&todate=&nic="><i class="fa fa-search" ></i></a>&nbsp;&nbsp;<%= s%></td>
+                                                <%}else if(s.equals("New Referal's Genarated")){%>
+                                                    <td style="border: 1px solid  #d7dde8  ;"><a href="SearchCustomerController?customername=&leadstatus=&salesactivitystage=New+Referal's+Genarated&leadsource=&policystatus=&date++created=&todate=&nic="><i class="fa fa-search" ></i></a>&nbsp;&nbsp;<%= s%></td>
+                                                <%}%>
                                                 <td style="border: 1px solid  #d7dde8;">
-                                                    <span><%= itr.next()%>&nbsp;</span><a href="javascript:loadSimpleForm()"><i class="fa fa-pencil" ></i></a>
+                                                    <span><%= itr.next()%>&nbsp;</span>
                                                     <span class="pull-right">&nbsp;<%= itr.next()%>&nbsp;<i class=" fa <%= itr.next()%>" style="font-size:18px;color:<%= itr.next()%>"></i></span>
                                                 </td>
                                                 <td style="border: 1px solid  #d7dde8;">
-                                                    <span><%= itr.next()%>&nbsp;</span><a href="./pages/dashboard1.jsp"><i class="fa fa-pencil" ></i></a>
+                                                    <span><%= itr.next()%>&nbsp;</span>
                                                     <span class="pull-right">&nbsp;<%= itr.next()%>&nbsp;<i class="fa <%= itr.next()%>" style="font-size:18px;color:<%= itr.next()%>"></i></span>
                                                 </td>
                                                 <td style="border: 1px solid  #d7dde8;"> 
-                                                    <span><%= itr.next()%>&nbsp;</span><a href="./pages/dashboard1.jsp"><i class="fa fa-pencil" ></i></a>
+                                                    <span><%= itr.next()%>&nbsp;</span>
                                                     <span class="pull-right">&nbsp;<%= itr.next()%>&nbsp;<i class="fa <%= itr.next()%>" style="font-size:18px;color:<%= itr.next()%>"></i></span>
                                                 </td>
                                                 <td style="border: 1px solid  #d7dde8;">
-                                                    <span><%= itr.next()%>&nbsp;</span><a href="./pages/dashboard1.jsp"><i class="fa fa-pencil" ></i></a>
+                                                    <span><%= itr.next()%>&nbsp;</span>
                                                     <span class="pull-right">&nbsp;<%= itr.next()%>&nbsp;<i class="fa <%= itr.next()%>" style="font-size:18px;color:<%= itr.next()%>"></i></span>
                                                 </td>
                                                 <td><center><%= itr.next()%></center></td>

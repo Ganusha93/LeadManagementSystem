@@ -358,13 +358,13 @@
                                                 <label for="salactstage">Sales Activity Stage</label>
                                                 <select id="salactstage" name="salesactivitystage">
                                                     <option style="display: none" value=""></option>
-                                                    <option value="namescollected">Names Collected</option>
+                                                    <option value="names collected">Names Collected</option>
                                                     <option value="qualified prospects">Qualified Prospects</option>
                                                     <option value="appointmentstaken">Appointments Taken</option>
-                                                    <option value="factfindinginterviews">Fact Finding Interviews</option>
-                                                    <option value="salespresentation">Sales Presentation</option>
-                                                    <option value="followupinterviews">Follow Up Interviews</option>
-                                                    <option value="noofclosings">No of Closings</option>
+                                                    <option value="fact finding interviews">Fact Finding Interviews</option>
+                                                    <option value="sales presentation">Sales Presentation</option>
+                                                    <option value="follow up interviews">Follow Up Interviews</option>
+                                                    <option value="no of closings">No of Closings</option>
                                                 </select> 
 
                                             </div>

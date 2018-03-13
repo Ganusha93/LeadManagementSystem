@@ -74,11 +74,11 @@ public class MonthlyCyclePlanController extends HttpServlet {
                 responsemcp.add(fa);
                 if (fp - fa > 0) {
                     responsemcp.add(fp - fa);
-                    responsemcp.add("fa-toggle-down");
+                    responsemcp.add("fa-arrow-down");
                     responsemcp.add("red");
                 } else {
                     responsemcp.add(fa - fp);
-                    responsemcp.add("fa-toggle-up");
+                    responsemcp.add("fa-arrow-up");
                     responsemcp.add("green");
                     
                 }
@@ -86,34 +86,34 @@ public class MonthlyCyclePlanController extends HttpServlet {
                 responsemcp.add(sa);
                 if (sp - sa > 0) {
                     responsemcp.add(sp - sa);
-                    responsemcp.add("fa-toggle-down");
+                    responsemcp.add("fa-arrow-down");
                     responsemcp.add("red");
                     
                 } else {
                     responsemcp.add(sa - sp);
-                    responsemcp.add("fa-toggle-up");
+                    responsemcp.add("fa-arrow-up");
                     responsemcp.add("green");
                 }
                 
                 responsemcp.add(ta);
                 if (tp - ta > 0) {
                     responsemcp.add(tp - ta);
-                    responsemcp.add("fa-toggle-down");
+                    responsemcp.add("fa-arrow-down");
                     responsemcp.add("red");
                 } else {
                     responsemcp.add(ta - tp);
-                    responsemcp.add("fa-toggle-up");
+                    responsemcp.add("fa-arrow-up");
                     responsemcp.add("green");
                 }
                 
                 responsemcp.add(foa);
                 if (fop - foa > 0) {
                     responsemcp.add(fop - foa);
-                    responsemcp.add("fa-toggle-down");
+                    responsemcp.add("fa-arrow-down");
                     responsemcp.add("red");
                 } else {
                     responsemcp.add(foa - fop);
-                    responsemcp.add("fa-toggle-up");
+                    responsemcp.add("fa-arrow-up");
                     responsemcp.add("green");
                 }
                 
@@ -121,11 +121,11 @@ public class MonthlyCyclePlanController extends HttpServlet {
                 responsemcp.add(actual);
                 if ((fp + sp + tp + fop) - actual > 0) {
                     responsemcp.add((fp + sp + tp + fop) - actual);
-                    responsemcp.add("fa-toggle-down");
+                    responsemcp.add("fa-arrow-down");
                     responsemcp.add("red");
                 } else {
                     responsemcp.add(actual - (fp + sp + tp + fop));
-                    responsemcp.add("fa-toggle-up");
+                    responsemcp.add("fa-arrow-up");
                     responsemcp.add("green");
                 }
                 

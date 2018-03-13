@@ -32,6 +32,10 @@
         <servlet-name>LogoutController</servlet-name>
         <servlet-class>controller.LogoutController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>InsertCustomerDetailsController</servlet-name>
+        <servlet-class>controller.InsertCustomerDetailsController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>MonthlyCyclePlanController</servlet-name>
         <url-pattern>/MonthlyCyclePlanController</url-pattern>
@@ -63,6 +67,10 @@
     <servlet-mapping>
         <servlet-name>LogoutController</servlet-name>
         <url-pattern>/LogoutController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>InsertCustomerDetailsController</servlet-name>
+        <url-pattern>/InsertCustomerDetailsController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
